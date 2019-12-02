@@ -1,0 +1,47 @@
+<head>
+  <title>C-moon</title>
+  <!-- Plotly.js -->
+  <script src="./js/plotly-latest.min.js"></script>
+</head>
+
+<body>  
+  <div id="myDiv" style:width: 100%><!-- Plotly chart will be drawn inside this DIV --></div>
+  <script>
+Date.prototype.toLocaleDateString = function() {
+	return this.getFullYear() + "-" + (this.getMonth() + 1) + "-" + this.getDate() + " " + this.getHours() + ":" + this.getMinutes() + ":" + this.getSeconds();
+};
+
+var myPlot = document.getElementById('myDiv');
+var x = [];
+var y = [];
+var description = [];
+var traces = [];
+for(var i = 0; i < x.length; i++) {
+	var data = { 
+		x: [x[i]], 
+		y: [y[i]], 
+		type: 'scatter', 
+		mode: 'markers', 
+		marker: {
+			color: 'black', 
+			size: 8
+		}, 
+		name: description[i], 
+		hoverinfo: 'all'
+	};
+	traces.push(data);
+}
+var layout = {
+	hovermode: 'closest',
+	title: 'Events ( 2008 - 2019 )'
+};
+
+console.log(x);
+Plotly.newPlot('myDiv', traces, layout, {showSendToCloud: true});
+
+myPlot.on('plotly_click', function(data){
+	var redirect_url = './demo.html';
+	window.location.href = redirect_url;
+});
+  </script>
+</body>
