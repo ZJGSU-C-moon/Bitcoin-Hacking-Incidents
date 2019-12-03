@@ -4,76 +4,90 @@
   <script src="./js/plotly-latest.min.js"></script>
 </head>
 
-<body>  
-  <div id="myDiv" style:width: 100%><!-- Plotly chart will be drawn inside this DIV --></div>
+<body>
+  <div id="myDiv" style:width: 100%>
+    <!-- Plotly chart will be drawn inside this DIV -->
+  </div>
   <script>
-Date.prototype.toLocaleDateString = function() {
-	return this.getFullYear() + "-" + (this.getMonth() + 1) + "-" + this.getDate() + " " + this.getHours() + ":" + this.getMinutes() + ":" + this.getSeconds();
-};
+    Date.prototype.toLocaleDateString = function() {
+      return (
+        this.getFullYear() +
+        "-" +
+        (this.getMonth() + 1) +
+        "-" +
+        this.getDate() +
+        " " +
+        this.getHours() +
+        ":" +
+        this.getMinutes() +
+        ":" +
+        this.getSeconds()
+      );
+    };
 
-var myPlot = document.getElementById('myDiv');
-x = [
-	'2008-11-01 00:00:00', 
-	'2009-01-05 00:00:00',
-	'2014-01-27 00:00:00',
-	'2014-02-25 00:00:00',
-	'2014-02-25 16:40:00',
-	'2017-05-05 00:00:00',
-	'2017-12-17 00:00:00',
-	'2018-11-21 00:00:00',
-	'2018-11-25 00:00:00',
-	'2019-04-01 00:00:00',
-	'2019-05-12 00:00:00',
-	'2019-05-14 00:00:00',
-	'2019-06-22 00:00:00',
-	'2019-06-26 00:00:00', 
-	'2019-06-27 00:00:00'
-];
-y = [
-	0, 
-	0, 
-	5032,
-	3562.41,
-	3185,
-	9222,
-	19850,
-	3000,
-	4100,
-	5000,
-	7000,
-	8000,
-	10200,
-	12000, 
-	14000
-];
-var description = x;
-var traces = [];
-for(var i = 0; i < x.length; i++) {
-	var data = { 
-		x: [x[i]], 
-		y: [y[i]], 
-		type: 'scatter', 
-		mode: 'markers', 
-		marker: {
-			color: 'black', 
-			size: 8
-		}, 
-		name: description[i], 
-		hoverinfo: 'all'
-	};
-	traces.push(data);
-}
-var layout = {
-	hovermode: 'closest',
-	title: 'Bitcoin\'s Value ( 2008 - 2019 )'
-};
+    var myPlot = document.getElementById("myDiv");
+    x = [
+      "2008-11-01 00:00:00",
+      "2009-01-05 00:00:00",
+      "2014-01-27 00:00:00",
+      "2014-02-25 00:00:00",
+      "2014-02-25 16:40:00",
+      "2017-05-05 00:00:00",
+      "2017-12-17 00:00:00",
+      "2018-11-21 00:00:00",
+      "2018-11-25 00:00:00",
+      "2019-04-01 00:00:00",
+      "2019-05-12 00:00:00",
+      "2019-05-14 00:00:00",
+      "2019-06-22 00:00:00",
+      "2019-06-26 00:00:00",
+      "2019-06-27 00:00:00"
+    ];
+    y = [
+      0,
+      0,
+      5032,
+      3562.41,
+      3185,
+      9222,
+      19850,
+      3000,
+      4100,
+      5000,
+      7000,
+      8000,
+      10200,
+      12000,
+      14000
+    ];
+    var description = x;
+    var traces = [];
+    for (var i = 0; i < x.length; i++) {
+      var data = {
+        x: [x[i]],
+        y: [y[i]],
+        type: "scatter",
+        mode: "markers",
+        marker: {
+          color: "black",
+          size: 8
+        },
+        name: description[i],
+        hoverinfo: "all"
+      };
+      traces.push(data);
+    }
+    var layout = {
+      hovermode: "closest",
+      title: "Bitcoin's Value ( 2008 - 2019 )"
+    };
 
-console.log(x);
-Plotly.newPlot('myDiv', traces, layout, {showSendToCloud: true});
+    console.log(x);
+    Plotly.newPlot("myDiv", traces, layout, { showSendToCloud: true });
 
-myPlot.on('plotly_click', function(data){
-	var redirect_url = './demo.html';
-	window.location.href = redirect_url;
-});
+    myPlot.on("plotly_click", function(data) {
+      var redirect_url = "./demo.html";
+      window.location.href = redirect_url;
+    });
   </script>
 </body>
